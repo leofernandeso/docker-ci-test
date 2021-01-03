@@ -1,0 +1,13 @@
+sudo: required
+services:
+  - docker
+
+# Run before test are done
+before_install:
+  - docker build -f Dockerfile.dev -t docker-ci-test .
+
+# Series of cmds that run when travis CI gets executed
+# If doesn't return status_code == 0, travis assumes that the tests failed
+script:
+  - docker run docker-ci-test python test.py
+

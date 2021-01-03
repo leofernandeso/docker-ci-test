@@ -9,5 +9,5 @@ COPY . .
 # Command to run when the container is ran
 CMD ["python", "app.py"]
 
-FROM nginx
+# FROM nginx
 # COPY --from==builder /usr/src/build /usr/share/nginx/html
