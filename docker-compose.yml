@@ -1,0 +1,23 @@
+version: '3'
+services: 
+  simple-app: 
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "80:80"
+    restart: "always"
+    volumes:
+      - .:/usr/src/app
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+  # specify based on pre loaded images
+  redis-server:
+    image: 'redis'
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/usr/src/app
+    command: ["python", "test.py"]

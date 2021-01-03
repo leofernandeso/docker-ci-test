@@ -1,0 +1,14 @@
+# Using an existing docker python3 image as a base
+FROM python:3
+
+WORKDIR /usr/src/app
+
+# Cached requirements file
+COPY ./requirements.txt ./
+
+# This will only run if the requirements file change
+RUN pip install flask redis requests
+COPY . .
+
+# Command to run when the container is ran
+CMD ["python", "app.py"]
