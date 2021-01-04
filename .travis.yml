@@ -1,3 +1,6 @@
+# Every time we push to master, travis CI will run the steps
+# defined in this file to perform the build of the application
+
 sudo: required
 services:
   - docker
@@ -9,5 +12,14 @@ before_install:
 # Series of cmds that run when travis CI gets executed
 # If doesn't return status_code == 0, travis assumes that the tests failed
 script:
+  - echo "run tests if any"     # perform tests
   - docker run docker-ci-test python test.py
+
+# Tells travis how to deploy the application to the server
+# (Needs to be changed for GCP)
+deploy:
+  - provider: script
+  script: travis/deploy.sh
+  on:
+    branch: master    # every time we push to master, makes the deploy
 
