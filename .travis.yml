@@ -18,7 +18,7 @@ script:
 # Tells travis how to deploy the application to the server
 # (Needs to be changed for GCP)
 deploy:
-  - provider: script
+  provider: script
   script: travis/deploy.sh
   on:
     branch: main    # every time we push to master, makes the deploy
