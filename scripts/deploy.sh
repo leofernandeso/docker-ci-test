@@ -27,11 +27,11 @@ echo "Building image..."
 docker build -t ${APP_NAME} .
 
 # Tagging
-docker tag ${APP_NAME} gcr.io/${PROJECT_ID}/${APP_NAME}:${TRAVIS_COMMIT}
+docker tag ${APP_NAME} gcr.io/${PROJECT_ID}/${APP_NAME}:v3
 
 # Pushing to container registry
-gcloud docker -- push gcr.io/${PROJECT_ID}/${APP_NAME}:${TRAVIS_COMMIT}
+gcloud docker -- push gcr.io/${PROJECT_ID}/${APP_NAME}:v3
 
 echo "KubeCTL deploying..."
 # Updating existing deploy
-kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${APP_NAME}:${TRAVIS_COMMIT}
+kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${APP_NAME}:v3
