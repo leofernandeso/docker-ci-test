@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: simple-app
-        image: gcr.io/august-bot-299118/simple-app
+        image: gcr.io/august-bot-299118/simple-app:latest
 --- 
 # A load balancer is type of service which will expose an IP and route the requests to this IP to the internal pods.     
 apiVersion: v1
