@@ -19,7 +19,7 @@ script:
 # (Needs to be changed for GCP)
 deploy:
   provider: script
-  script: chmod u+x deploy.sh
+  script: chmod u+x scripts/deploy.sh
   on:
     branch: main    # every time we push to main, makes the deploy
 
