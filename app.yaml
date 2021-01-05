@@ -1,4 +1,4 @@
-# Kubernets cluster deploy file
+# Kubernetes cluster deploy file
 apiVersion: "apps/v1"
 kind: Deployment
 metadata:
