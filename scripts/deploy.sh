@@ -22,9 +22,16 @@ gcloud --quiet config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
 gcloud --quiet container clusters get-credentials ${CLUSTER_NAME}
 
 echo "Building image..."
+
+# Building image
 docker build -t ${APP_NAME} .
+
+# Tagging
 docker tag ${APP_NAME} gcr.io/${PROJECT_ID}/${APP_NAME}:${TRAVIS_COMMIT}
+
+# Pushing to container registry
 gcloud docker -- push gcr.io/${PROJECT_ID}/${APP_NAME}:${TRAVIS_COMMIT}
 
 echo "KubeCTL deploying..."
+# Updating existing deploy
 kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${APP_NAME}:${TRAVIS_COMMIT}
