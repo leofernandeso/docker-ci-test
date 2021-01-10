@@ -18,6 +18,6 @@ def write_db():
 
 @app.route('/')
 def hello_world():
-    return "Hello, World! Hello World! Teste Volume Teste Volume - Live deploy 2iyiyiy"
+    return "Hello World! Hallo Welt!"
 
 app.run(host='0.0.0.0', port=80)
